@@ -23,4 +23,8 @@ export class ProductListComponent {
     'font-style': 'italic',
     'font-weight': 'bold'
   };
+
+  onAdded(product: Product) {
+    alert(`${product.title} added to cart!`);
+  }
 }

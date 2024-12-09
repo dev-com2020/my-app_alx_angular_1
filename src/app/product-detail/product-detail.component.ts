@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output} from '@angular/core';
 import { Product } from '../product';
 
 @Component({
@@ -9,5 +9,10 @@ import { Product } from '../product';
   styleUrl: './product-detail.component.css'
 })
 export class ProductDetailComponent {
-  @Input() product: Product | undefined;
+  @Input({required:true}) product: Product | undefined
+  @Output() added = new EventEmitter<Product>();
+
+  addtoCart(){
+    this.added.emit(this.product);
+  }
 }
