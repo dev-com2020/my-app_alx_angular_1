@@ -1,4 +1,5 @@
-<p>Lista produktów:</p>
+<p [style]="currentStyles">Lista produktów:</p>
+
 @if (products.length > 0) {
     <h1>Ilość produktów: ({{products.length}})</h1>
 } @else if (products.length === 100) {
@@ -17,7 +18,7 @@
 
 <ul>
     @for (product of products; track product.id) {
-        <li>
+        <li (click)="selectedProduct = product">
             @switch (product.title) {
                 @case ('Screwdriver') {
                     <span style="color: red;">{{product.title}}</span>}
@@ -29,6 +30,14 @@
             }
         </li>
     } @empty {
-        <li>Brak produktów</li>
+        <li [style.color]="'green'">Brak produktów</li>
     }
 </ul>
+
+<!-- @if (selectedProduct) {
+    <h2>Wybrany produkt: {{selectedProduct.title}}</h2>
+} @else {
+    <h2>Brak wybranego produktu</h2>
+} -->
+
+<app-product-detail [product]="selectedProduct"></app-product-detail>

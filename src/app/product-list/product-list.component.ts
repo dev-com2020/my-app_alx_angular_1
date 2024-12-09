@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Product } from '../product';
+import { ProductDetailComponent } from '../product-detail/product-detail.component';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [],
+  imports: [ProductDetailComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
@@ -15,4 +16,11 @@ export class ProductListComponent {
     {id: 3, title: 'Drill'},
     {id: 4, title: 'Saw'}
   ];
+
+  selectedProduct: Product | undefined;
+  
+  currentStyles = {
+    'font-style': 'italic',
+    'font-weight': 'bold'
+  };
 }
