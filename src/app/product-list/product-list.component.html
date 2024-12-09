@@ -41,5 +41,8 @@
 } -->
 
 <app-product-detail 
+#productDetail
 [product]="selectedProduct"
 (added)="onAdded($event)"></app-product-detail>
+<hr>
+<span>{{productDetail.product?.title}}</span>
