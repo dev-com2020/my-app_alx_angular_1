@@ -3,10 +3,12 @@ import { Component, Input, EventEmitter,
   OnDestroy,OnChanges,SimpleChanges} from '@angular/core';
 import { Product } from '../product';
 import { CommonModule } from '@angular/common';
+import { CurrencyPlnPipe } from '../currency-pln.pipe';
+
 
 @Component({
     selector: 'app-product-detail',
-    imports: [CommonModule],
+    imports: [CommonModule, CurrencyPlnPipe],
     templateUrl: './product-detail.component.html',
     styleUrl: './product-detail.component.css',
     standalone: true,

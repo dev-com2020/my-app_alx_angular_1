@@ -3,7 +3,7 @@
         <div>
     Wybrałeś:
         <strong>{{product.title}}</strong><br>
-        <strong>{{product.price | currency:'EUR'}}</strong>
+        <strong>{{product.price | currencyPln }}</strong>
         <div class="pill-group">
             @for (cat of product.categories | keyvalue; track cat.key) {
                 <p>{{cat.value | lowercase}}</p>
