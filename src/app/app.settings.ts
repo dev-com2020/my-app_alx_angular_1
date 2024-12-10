@@ -6,7 +6,7 @@ export interface AppSettings {
     apiUrl: string;
 }
 
-export const AppSettings: AppSettings = {
+export const appSettings: AppSettings = {
     title2: 'moja aplikacja',
     version: '1.0.0',
     apiUrl: 'https://fakestoreapi.com'
