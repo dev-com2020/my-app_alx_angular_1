@@ -20,7 +20,7 @@
 </ul> -->
 
 <ul>
-    @for (product of products; track product.id) {
+    @for (product of products(); track product.id) {
         <li (click)="selectedProduct = product">
             @switch (product.title) {
                 @case ('Screwdriver') {
@@ -49,6 +49,4 @@
 (added)="onAdded($event)"></app-product-detail>
 <hr>
 <span>{{productDetail.product?.title}}</span>
-<hr>
-<h2>Ulubione</h2>
-<app-favorites></app-favorites>
+

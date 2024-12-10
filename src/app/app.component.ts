@@ -14,9 +14,7 @@ import { KeyLoggerComponent } from './key-logger/key-logger.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true,
-  providers: [
-    { provide: APP_SETTINGS, useValue: AppSettings }
-  ]
+  providers: []
 })
 export class AppComponent {
   title2: string = 'my-app';

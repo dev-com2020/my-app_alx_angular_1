@@ -10,6 +10,6 @@ import { OrdersModule } from '../orders/orders.module';
     CommonModule,
     OrdersModule
   ],
-  providers: [ProductsService]
+  providers: []
 })
 export class ProductsModule { }

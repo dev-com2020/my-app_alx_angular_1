@@ -3,34 +3,33 @@ import { Product } from '../product';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { ProductHostDirective } from '../product-host.directive';
 import { ProductsService } from '../products/products.service';
-import { FavoritesComponent } from '../favorites/favorites.component';
-import { Subscription } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
+
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-product-list',
-    imports: [ProductDetailComponent, ProductHostDirective, 
-    FavoritesComponent],
+    imports: [ProductDetailComponent, ProductHostDirective
+],
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.css',
     standalone: true,
-    providers: [
-      { provide:ProductsService, useClass: ProductsService }]
+
 })
 
 
-export class ProductListComponent implements AfterViewInit, OnInit, OnDestroy {
-  products$ = inject(ProductsService).getProducts();
+export class ProductListComponent implements AfterViewInit{
+  products = toSignal(inject(ProductsService).getProducts(), {
+    initialValue: [],
+  });
   selectedProduct: Product | undefined;
-  products: Product[] = [];
-  private productsSub: Subscription | undefined;
+  
 
-  ngOnInit(): void {
-    this.getProducts();
-  }
 
-  ngOnDestroy(): void {
-    this.productsSub?.unsubscribe();
-  }
+  // ngOnInit(): void {
+  //   this.getProducts();
+  // }
+
 
   @ViewChild(ProductDetailComponent) productDetail: ProductDetailComponent | undefined;
   
@@ -47,10 +46,8 @@ export class ProductListComponent implements AfterViewInit, OnInit, OnDestroy {
     alert(`${product.title} added to cart!`);
   }
 
-  private getProducts() {
-    this.productsSub = this.products$.subscribe(products => {
-      this.products = products;
-  });
-  }
+  // private getProducts() {
+  //   this.products$ = this.productsService.getProducts();
+  // }
 
 }
