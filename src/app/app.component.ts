@@ -5,10 +5,12 @@ import { CopyrightDirective } from './copyright.directive';
 import { ProductsModule } from './products/products.module';
 import { AppSettings, APP_SETTINGS } from './app.settings';
 import { bindCallback, Observable } from 'rxjs';
+import { KeyLoggerComponent } from './key-logger/key-logger.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ProductListComponent, CopyrightDirective, ProductsModule],
+  imports: [RouterOutlet, ProductListComponent, 
+    CopyrightDirective, ProductsModule, KeyLoggerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true,
@@ -23,29 +25,15 @@ export class AppComponent {
     this.title$.subscribe(this.setTitle);
     }
 
-  // private onComplete(){
-  //   return new Promise<void>(resolve => {
-  //     setInterval(() => {
-  //       resolve();
-  //     }, 3000);
-  //   });
-  // }
-
   title$ = new Observable(observer => {
     setInterval(() => {
       observer.next();
     }, 3000);
   });
   
-
   private setTitle = () => {
     const timestamp = new Date().getTime();
     this.title2 = `${this.settings.title2} (${timestamp})`;
   }
 
-  // private changeTitle(callback: Function) {
-  //   setTimeout(() => {
-  //     callback();
-  //   }, 3000);
-  // }
 }

@@ -10,7 +10,7 @@ export class FavoritesService extends ProductsService {
   constructor() {
     super();
   }
-  override getProducts(): Product[] {
-    return super.getProducts().slice(0, 3);
-  }
+  // override getProducts(): Product[] {
+  //   return super.getProducts().slice(0, 3);
+  // }
 }

@@ -13,12 +13,12 @@ import { favoritesFactory } from '../favorites';
   standalone: true,
   providers: [{ provide: ProductsService, useFactory: favoritesFactory(true) }]
 })
-export class FavoritesComponent implements OnInit {
+export class FavoritesComponent{
   products: Product[] = [];
   constructor(@Host() private productsService: ProductsService) {}
 
-  ngOnInit(): void {
-    this.products = this.productsService.getProducts();
-  }
+  // ngOnInit(): void {
+  //   this.products = this.productsService.getProducts();
+  // }
 
 }
