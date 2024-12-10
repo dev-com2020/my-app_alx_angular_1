@@ -1,7 +1,8 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { ProductHostDirective } from '../product-host.directive';
+import { ProductsService } from '../products.service';
 
 @Component({
     selector: 'app-product-list',
@@ -12,16 +13,18 @@ import { ProductHostDirective } from '../product-host.directive';
 })
 
 
-export class ProductListComponent implements AfterViewInit {
+export class ProductListComponent implements AfterViewInit, OnInit {
+
+  constructor(private productsService: ProductsService) {
+  }
+
+  ngOnInit(): void {
+    this.products = this.productsService.getProducts();
+  }
 
   @ViewChild(ProductDetailComponent) productDetail: ProductDetailComponent | undefined;
 
-  products: Product[] = [
-    {id: 1, title: 'Screwdriver', price: 4.99, categories: {1: 'tools', 2: 'home-improvement'}},
-    {id: 2, title: 'Hammer', price: 3.99, categories: {1: 'tools', 2: 'home-improvement'}},
-    {id: 3, title: 'Drill', price: 42.99, categories: {1: 'electric-tools', 2: 'home-improvement'}},
-    {id: 4, title: 'Saw', price: 14.99, categories: {1: 'TOOLS', 2: 'home-improvement'}}
-  ];
+  products: Product[] = [];
 
   selectedProduct: Product | undefined;
   
@@ -37,4 +40,7 @@ export class ProductListComponent implements AfterViewInit {
   onAdded(product: Product) {
     alert(`${product.title} added to cart!`);
   }
+  // onAdded() {
+  //   alert(`${this.selectedProduct?.title} added to cart!`);
+  // }
 }
