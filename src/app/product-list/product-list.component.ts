@@ -11,7 +11,8 @@ import { FavoritesComponent } from '../favorites/favorites.component';
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.css',
     standalone: true,
-    providers: [ProductsService]
+    providers: [
+      { provide:ProductsService, useClass: ProductsService }]
 })
 
 
