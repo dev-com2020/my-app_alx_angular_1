@@ -1,6 +1,6 @@
 import { Component, Host, OnInit, Optional } from '@angular/core';
 import { Product } from '../product';
-import { ProductsService } from '../products.service';
+import { ProductsService } from '../products/products.service';
 import { CommonModule } from '@angular/common';
 import { FavoritesService } from '../favorites.service';
 import { favoritesFactory } from '../favorites';

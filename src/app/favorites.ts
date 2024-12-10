@@ -1,5 +1,5 @@
 import { FavoritesService } from "./favorites.service";
-import { ProductsService } from "./products.service";
+import { ProductsService } from "./products/products.service";
 
 export function favoritesFactory(isFavorites:boolean) {
     return () => {

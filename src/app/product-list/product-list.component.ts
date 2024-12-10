@@ -2,7 +2,7 @@ import { Component, AfterViewInit, ViewChild, OnInit, Inject, inject } from '@an
 import { Product } from '../product';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { ProductHostDirective } from '../product-host.directive';
-import { ProductsService } from '../products.service';
+import { ProductsService } from '../products/products.service';
 import { FavoritesComponent } from '../favorites/favorites.component';
 
 @Component({
