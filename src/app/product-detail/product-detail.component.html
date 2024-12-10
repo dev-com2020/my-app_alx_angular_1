@@ -1,9 +1,14 @@
 
     @if (product) {
         <div>
-    <p>Wybrałeś:
-        <strong>{{product.title}}</strong>
-    </p>
+    Wybrałeś:
+        <strong>{{product.title}}</strong><br>
+        <strong>{{product.price | currency:'EUR'}}</strong>
+        <div class="pill-group">
+            @for (cat of product.categories | keyvalue; track cat.key) {
+                <p>{{cat.value | lowercase}}</p>
+            }
+        </div>
     <button (click)="addtoCart()">Dodaj do koszyka</button>
 </div>
 }

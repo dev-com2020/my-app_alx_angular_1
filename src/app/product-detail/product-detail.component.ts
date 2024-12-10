@@ -2,10 +2,11 @@ import { Component, Input, EventEmitter,
   Output, ViewEncapsulation, OnInit,
   OnDestroy,OnChanges,SimpleChanges} from '@angular/core';
 import { Product } from '../product';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-product-detail',
-    imports: [],
+    imports: [CommonModule],
     templateUrl: './product-detail.component.html',
     styleUrl: './product-detail.component.css',
     standalone: true,
