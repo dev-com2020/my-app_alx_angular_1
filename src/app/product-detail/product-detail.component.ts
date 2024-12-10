@@ -2,11 +2,11 @@ import { Component, Input, EventEmitter, Output} from '@angular/core';
 import { Product } from '../product';
 
 @Component({
-  selector: 'app-product-detail',
-  standalone: true,
-  imports: [],
-  templateUrl: './product-detail.component.html',
-  styleUrl: './product-detail.component.css'
+    selector: 'app-product-detail',
+    imports: [],
+    templateUrl: './product-detail.component.html',
+    styleUrl: './product-detail.component.css',
+    standalone: true
 })
 export class ProductDetailComponent {
   @Input({required:true}) product: Product | undefined
