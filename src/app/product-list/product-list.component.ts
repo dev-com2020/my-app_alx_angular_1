@@ -1,32 +1,26 @@
-import { Component, AfterViewInit, ViewChild, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, OnInit, Inject, inject } from '@angular/core';
 import { Product } from '../product';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { ProductHostDirective } from '../product-host.directive';
 import { ProductsService } from '../products.service';
+import { FavoritesComponent } from '../favorites/favorites.component';
 
 @Component({
     selector: 'app-product-list',
-    imports: [ProductDetailComponent, ProductHostDirective],
+    imports: [ProductDetailComponent, ProductHostDirective, FavoritesComponent],
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.css',
-    standalone: true
+    standalone: true,
+    providers: [ProductsService]
 })
 
 
-export class ProductListComponent implements AfterViewInit, OnInit {
+export class ProductListComponent implements AfterViewInit {
+  products = inject(ProductsService).getProducts();
+  selectedProduct: Product | undefined;
 
-  constructor(private productsService: ProductsService) {
-  }
-
-  ngOnInit(): void {
-    this.products = this.productsService.getProducts();
-  }
 
   @ViewChild(ProductDetailComponent) productDetail: ProductDetailComponent | undefined;
-
-  products: Product[] = [];
-
-  selectedProduct: Product | undefined;
   
   currentStyles = {
     'font-style': 'italic',
