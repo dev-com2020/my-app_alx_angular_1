@@ -1,4 +1,4 @@
-import { inject, Inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Product } from '../product';
 import { Observable, of } from 'rxjs';
 import { APP_SETTINGS } from '../app.settings';
@@ -12,9 +12,8 @@ export class ProductsService {
 
   private products: Product[] = [];
   private productsUrl = inject(APP_SETTINGS).apiUrl + '/products';
-  private http = inject(HttpClient);
 
-  constructor() {
+  constructor(private http: HttpClient) {
    }
 
   getProducts(): Observable<Product[]> {

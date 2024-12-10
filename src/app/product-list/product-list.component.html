@@ -4,7 +4,7 @@
 <p [style]="currentStyles">Lista produktów:</p>
 
 @if (products.length > 0) {
-    <h1>Ilość produktów: ({{products.length}})</h1>
+    <h1>Ilość produktów: ({{products().length}})</h1>
 } @else if (products.length === 100) {
     <span>Lista produktów jest pełna, kliknij 
         <a>TUTAJ</a> aby zobaczyć więcej produktów...</span>
