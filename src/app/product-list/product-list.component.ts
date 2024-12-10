@@ -1,10 +1,11 @@
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { Product } from '../product';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
+import { ProductHostDirective } from '../product-host.directive';
 
 @Component({
     selector: 'app-product-list',
-    imports: [ProductDetailComponent],
+    imports: [ProductDetailComponent, ProductHostDirective],
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.css',
     standalone: true
