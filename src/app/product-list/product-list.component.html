@@ -1,13 +1,13 @@
-<h2>Promocja!</h2>
-<!--<ng-template appProductHost></ng-template>-->
+@let products = (products$ | async)!;
 
-<p [style]="currentStyles">Lista produktów:</p>
+
+<p>Lista produktów:</p>
 
 <a routerLink="new">Dodaj nowy produkt</a>
 
 <ul>
-    @for (product of products(); track product.id) {
-        <li (click)="selectedProduct = product">
+    @for (product of products; track product.id) {
+        <li>
           <a [routerLink]="[product.id]">{{product.title}}</a>
         </li>
     } @empty {

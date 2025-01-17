@@ -9,12 +9,10 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 })
 
 export class ProductsService {
-
   private products: Product[] = [];
   private productsUrl = inject(APP_SETTINGS).apiUrl + '/products';
 
-  constructor(private http: HttpClient) {
-   }
+  constructor(private http: HttpClient) { }
 
   getProducts(limit?: number): Observable<Product[]> {
     if (this.products.length === 0) {
@@ -40,6 +38,6 @@ export class ProductsService {
         this.products.push(product);
         return product;
       })
-    )
+    );
   }
 }

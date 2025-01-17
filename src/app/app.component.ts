@@ -9,8 +9,8 @@ import { KeyLoggerComponent } from './key-logger/key-logger.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ProductListComponent,
-    CopyrightDirective, ProductsModule, KeyLoggerComponent, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet,
+    CopyrightDirective, ProductsModule,  RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true,
