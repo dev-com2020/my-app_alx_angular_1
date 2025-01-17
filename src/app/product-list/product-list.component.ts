@@ -6,10 +6,11 @@ import { ProductsService } from '../products/products.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 import { Observable, Subscription } from 'rxjs';
+import {RouterLink} from "@angular/router";
 
 @Component({
     selector: 'app-product-list',
-    imports: [ProductDetailComponent, ProductHostDirective
+    imports: [ProductHostDirective, RouterLink
 ],
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.css',
@@ -23,7 +24,7 @@ export class ProductListComponent implements AfterViewInit{
     initialValue: [],
   });
   selectedProduct: Product | undefined;
-  
+
 
 
   // ngOnInit(): void {
@@ -32,7 +33,7 @@ export class ProductListComponent implements AfterViewInit{
 
 
   @ViewChild(ProductDetailComponent) productDetail: ProductDetailComponent | undefined;
-  
+
   currentStyles = {
     'font-style': 'italic',
     'font-weight': 'bold'

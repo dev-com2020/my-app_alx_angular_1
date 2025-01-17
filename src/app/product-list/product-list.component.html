@@ -3,14 +3,16 @@
 
 <p [style]="currentStyles">Lista produktów:</p>
 
-@if (products.length > 0) {
-    <h1>Ilość produktów: ({{products().length}})</h1>
-} @else if (products.length === 100) {
-    <span>Lista produktów jest pełna, kliknij 
-        <a>TUTAJ</a> aby zobaczyć więcej produktów...</span>
-} @else {
-    <h1>Brak produktów</h1>
-}
+<a routerLink="new">Dodaj nowy produkt</a>
+
+<!--@if (products.length > 0) {-->
+<!--    <h1>Ilość produktów: ({{products().length}})</h1>-->
+<!--} @else if (products.length === 100) {-->
+<!--    <span>Lista produktów jest pełna, kliknij-->
+<!--        <a>TUTAJ</a> aby zobaczyć więcej produktów...</span>-->
+<!--} @else {-->
+<!--    <h1>ładowanie...</h1>-->
+<!--}-->
 <!-- <ul>
     @for (product of products; track product.id; let i = $index) {
         <li>{{i+1}} - {{product.title}}</li>
@@ -33,7 +35,7 @@
             }
         </li>
     } @empty {
-        <li [style.color]="'green'">Brak produktów</li>
+        <li [style.color]="'green'">ładowanie...</li>
     }
 </ul>
 
@@ -43,10 +45,10 @@
     <h2>Brak wybranego produktu</h2>
 } -->
 
-<app-product-detail 
-#productDetail
-[product]="selectedProduct"
-(added)="onAdded($event)"></app-product-detail>
-<hr>
-<span>{{productDetail.product?.title}}</span>
+<!--<app-product-detail-->
+<!--#productDetail-->
+<!--[product]="selectedProduct"-->
+<!--(added)="onAdded($event)"></app-product-detail>-->
+<!--<hr>-->
+<!--<span>{{productDetail.product?.title}}</span>-->
 
