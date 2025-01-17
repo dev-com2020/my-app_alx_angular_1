@@ -1,5 +1,5 @@
 import { Component, Inject, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import { ProductListComponent } from "./product-list/product-list.component";
 import { CopyrightDirective } from './copyright.directive';
 import { ProductsModule } from './products/products.module';
@@ -9,8 +9,8 @@ import { KeyLoggerComponent } from './key-logger/key-logger.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ProductListComponent, 
-    CopyrightDirective, ProductsModule, KeyLoggerComponent],
+  imports: [RouterOutlet, ProductListComponent,
+    CopyrightDirective, ProductsModule, KeyLoggerComponent, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true,
@@ -28,7 +28,7 @@ export class AppComponent {
       observer.next();
     }, 3000);
   });
-  
+
   private setTitle = () => {
     const timestamp = new Date().getTime();
     this.title2 = `${this.settings.title2} (${timestamp})`;
