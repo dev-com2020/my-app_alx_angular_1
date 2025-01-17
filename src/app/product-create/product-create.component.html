@@ -1,0 +1,20 @@
+<h2>Dodaj produkt</h2>
+<div>
+  <label for="title">Nazwa</label>
+  <input type="text" id="title" name="title" #title/>
+</div>
+<div>
+  <label for="price">Cena</label>
+  <input type="number" id="price" name="price" #price/>
+</div>
+<div>
+  <label for="categories">Kategorie</label>
+  <select id="categories" name="categories" #categories>
+    <option value="kat 1">Kategoria 1</option>
+    <option value="kat 2">Kategoria 2</option>
+    <option value="kat 3">Kategoria 3</option>
+  </select>
+</div>
+<div>
+  <button (click)="createProduct(title.value, price.value, categories.value)">Dodaj</button>
+</div>
