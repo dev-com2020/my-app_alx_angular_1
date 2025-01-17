@@ -14,7 +14,11 @@ export class ProductCreateComponent {
   productForm = new FormGroup({
     title: new FormControl('', {nonNullable:true}),
     price: new FormControl<number | undefined>(undefined, {nonNullable:true}),
-    categories: new FormControl('', {nonNullable:true})
+    categories: new FormControl('', {nonNullable:true}),
+    extra: new FormGroup({
+      image: new FormControl(''),
+      description: new FormControl('')
+    })
   })
 
 

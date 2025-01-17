@@ -2,21 +2,33 @@
 <form [formGroup]="productForm">
 <div>
   <label for="title">Nazwa</label>
-  <input id="title" formControlName="title"/>
+  <input id="title" formControlName="title" required min="1"/>
 </div>
 <div>
   <label for="price">Cena</label>
-  <input id="price" formControlName="price" type="number"/>
+  <input id="price" formControlName="price" type="number" required/>
 </div>
 <div>
   <label for="categories">Kategorie</label>
-  <select id="categories" formControlName="categories">
+  <select id="categories" formControlName="categories" required>
     <option value="kat 1">Kategoria 1</option>
     <option value="kat 2">Kategoria 2</option>
     <option value="kat 3">Kategoria 3</option>
   </select>
 </div>
+  <h3>Dodatkowe informacje</h3>
+  <form formGroupName="extra">
+    <div>
+      <label for="description">Opis</label>
+      <input id="description" formControlName="description"/>
+    </div>
+    <label for="photo">Zdjęcie URL</label>
+    <input id="photo" formControlName="image"/>
+  </form>
 <div>
-  <button (click)="createProduct()">Dodaj</button>
+  <button [disabled]="productForm.invalid" (click)="createProduct()">Dodaj</button>
+  @if (productForm.invalid) {
+  Proszę uzupełnić wszystkie wymagalne pola!
+  }
 </div>
 </form>
