@@ -9,6 +9,12 @@
                 <p>{{cat.value | lowercase}}</p>
             }
         </div>
+          <div>
+            <form (ngSubmit)="changePrice(product)">
+            <input placeholder="Nowa cena" type="number" name="price" [(ngModel)]="product.price">
+            <button type="submit">Zmień cene</button>
+            </form>
+          </div>
 </div>
 }
 
