@@ -1,35 +1,28 @@
 import { Component, AfterViewInit, ViewChild, OnInit, Inject, inject, OnDestroy } from '@angular/core';
 import { Product } from '../product';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
-import { ProductHostDirective } from '../product-host.directive';
-import { ProductsService } from '../products/products.service';
-import { toSignal } from '@angular/core/rxjs-interop';
-
-import { Observable, Subscription } from 'rxjs';
-import {RouterLink} from "@angular/router";
+import {Observable, of, switchMap} from 'rxjs';
+import {ActivatedRoute, RouterLink} from "@angular/router";
 
 @Component({
     selector: 'app-product-list',
-    imports: [ProductHostDirective, RouterLink
+    imports: [RouterLink
 ],
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.css',
     standalone: true,
-
 })
 
 
-export class ProductListComponent implements AfterViewInit{
-  products = toSignal(inject(ProductsService).getProducts(), {
-    initialValue: [],
-  });
-  selectedProduct: Product | undefined;
+export class ProductListComponent implements OnInit{
+  products$: Observable<Product[]> | undefined;
+
+  constructor(private route: ActivatedRoute) {}
 
 
-
-  // ngOnInit(): void {
-  //   this.getProducts();
-  // }
+  ngOnInit(): void {
+    this.getProducts();
+  }
 
 
   @ViewChild(ProductDetailComponent) productDetail: ProductDetailComponent | undefined;
@@ -47,8 +40,10 @@ export class ProductListComponent implements AfterViewInit{
     alert(`${product.title} added to cart!`);
   }
 
-  // private getProducts() {
-  //   this.products$ = this.productsService.getProducts();
-  // }
+  private getProducts() {
+    this.products$ = this.route.data.pipe(
+      switchMap(data => of(data['products']))
+      );
+  }
 
 }

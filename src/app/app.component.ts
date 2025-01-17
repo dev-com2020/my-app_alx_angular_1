@@ -1,5 +1,5 @@
 import { Component, Inject, inject } from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import { ProductListComponent } from "./product-list/product-list.component";
 import { CopyrightDirective } from './copyright.directive';
 import { ProductsModule } from './products/products.module';
@@ -10,7 +10,7 @@ import { KeyLoggerComponent } from './key-logger/key-logger.component';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, ProductListComponent,
-    CopyrightDirective, ProductsModule, KeyLoggerComponent, RouterLink],
+    CopyrightDirective, ProductsModule, KeyLoggerComponent, RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true,

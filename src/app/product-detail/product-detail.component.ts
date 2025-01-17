@@ -1,9 +1,14 @@
-import { Component, Input, EventEmitter, 
+import {
+  Component, Input, EventEmitter,
   Output, ViewEncapsulation, OnInit,
-  OnDestroy,OnChanges,SimpleChanges} from '@angular/core';
+  OnDestroy, OnChanges, SimpleChanges, input
+} from '@angular/core';
 import { Product } from '../product';
 import { CommonModule } from '@angular/common';
 import { CurrencyPlnPipe } from '../currency-pln.pipe';
+import {ProductsService} from "../products/products.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Observable, switchMap} from "rxjs";
 
 
 @Component({
@@ -14,32 +19,21 @@ import { CurrencyPlnPipe } from '../currency-pln.pipe';
     standalone: true,
     encapsulation: ViewEncapsulation.Emulated
 })
-export class ProductDetailComponent implements OnInit, OnChanges {
+export class ProductDetailComponent implements OnInit{
+  id = input<number>();
+  product$: Observable<Product> | undefined;
 
-  constructor() { 
-    console.log('Product w constructor', this.product);
-  }
+  constructor(
+    private productService: ProductsService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    console.log('Product w ngOnInit', this.product);
-  }
-
-  ngOnDestroy(): void {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    const product = changes['product'];
-    if (!product.isFirstChange()) {
-      const oldValue = product.previousValue;
-      const newValue = product.currentValue;
-      console.log('Product w ngOnChanges old', oldValue);
-      console.log('Product w ngOnChanges new', newValue);
-    }
-  }
-
-  @Input({required:true}) product: Product | undefined
-  @Output() added = new EventEmitter<Product>();
-
-  addtoCart(){
-    this.added.emit(this.product);
+    this.product$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        return this.productService.getProduct(Number(params.get('id')));
+      })
+    )
   }
 }
