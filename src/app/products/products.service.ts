@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { Product } from '../product';
-import {Observable, of, map, pipe} from 'rxjs';
+import {Observable, of, map, catchError, throwError, retry} from 'rxjs';
 import { APP_SETTINGS } from '../app.settings';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams, HttpErrorResponse, HttpStatusCode} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,10 @@ export class ProductsService {
       }).pipe(map(products => {
         this.products = products;
         return products;
-      }));
+      }),
+        retry(3),
+        catchError(this.handleError)
+        );
     }
     return of(this.products);
   }
@@ -50,5 +53,23 @@ export class ProductsService {
       return product;
     }))
 
+  }
+  private handleError(error:HttpErrorResponse){
+    let message = '';
+    switch (error.status) {
+      case 0:
+        message = 'błąd aplikacji'
+        break;
+      case HttpStatusCode.NotFound:
+        message = 'Nie znaleziono produktu';
+        break;
+        case HttpStatusCode.BadRequest:
+          message = 'Request error'
+        break;
+      default:
+        message= 'błąd serwera'
+    }
+    console.log(message, error.error);
+    return throwError(() => error);
   }
 }
