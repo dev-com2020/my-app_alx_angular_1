@@ -26,7 +26,7 @@
     <input id="photo" formControlName="image"/>
   </form>
 <div>
-  <button [disabled]="productForm.invalid" (click)="createProduct()">Dodaj</button>
+  <button mat-raised-button [disabled]="productForm.invalid" (click)="createProduct()">Dodaj</button>
   @if (productForm.invalid) {
   Proszę uzupełnić wszystkie wymagalne pola!
   }

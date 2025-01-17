@@ -4,6 +4,7 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { APP_SETTINGS, appSettings, AppSettings } from './app.settings';
 import {AppErrorHandler} from "./app-error-handler";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,6 +12,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     { provide: APP_SETTINGS, useValue: appSettings },
-    { provide: ErrorHandler, useClass: AppErrorHandler }
+    { provide: ErrorHandler, useClass: AppErrorHandler }, provideAnimationsAsync()
   ]
 };

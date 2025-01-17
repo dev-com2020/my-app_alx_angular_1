@@ -3,10 +3,11 @@ import {ProductsService} from "../products/products.service";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {priceMaximumValidator} from "../price-maximum.validator";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-product-create',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatButton],
   templateUrl: './product-create.component.html',
   styleUrl: './product-create.component.css'
 })
