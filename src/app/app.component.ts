@@ -6,11 +6,12 @@ import { ProductsModule } from './products/products.module';
 import { AppSettings, APP_SETTINGS } from './app.settings';
 import { bindCallback, Observable } from 'rxjs';
 import { KeyLoggerComponent } from './key-logger/key-logger.component';
+import {AuthComponent} from "./auth/auth.component";
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet,
-    CopyrightDirective, ProductsModule,  RouterLink, RouterLinkActive],
+    CopyrightDirective, ProductsModule,  RouterLink, RouterLinkActive, AuthComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true,
